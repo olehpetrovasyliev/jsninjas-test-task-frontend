@@ -1,3 +1,8 @@
+export interface PaginatedReqParams {
+  page?: number;
+  perPage?: number;
+}
+
 export interface PaginatedApiRes<T> {
   page: number;
   perPage: number;
@@ -33,4 +38,8 @@ export interface CharacterEditReqData {
   superpowers?: string[];
   catch_phrase?: string;
   images?: File[];
+}
+
+export interface DeletedMessage {
+  message: string;
 }
