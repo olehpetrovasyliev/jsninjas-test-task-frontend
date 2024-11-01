@@ -19,15 +19,18 @@ import {
 export const getAllCharactersThunk = createAsyncThunk<
   PaginatedApiRes<CharacterResData>,
   PaginatedReqParams
->("characters/getAll", async (params, { rejectWithValue }) => {
-  try {
-    const res: AxiosResponse<PaginatedApiRes<CharacterResData>> =
-      await getAllCharacters(params);
-    return res.data;
-  } catch (error: any) {
-    return rejectWithValue(error.message);
+>(
+  "characters/getAll",
+  async (params: PaginatedReqParams, { rejectWithValue }) => {
+    try {
+      const res: AxiosResponse<PaginatedApiRes<CharacterResData>> =
+        await getAllCharacters(params);
+      return res.data;
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
   }
-});
+);
 
 export const getCharacterByIdThunk = createAsyncThunk<CharacterResData, string>(
   "characters/getById",

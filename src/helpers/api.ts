@@ -3,7 +3,6 @@ import {
   CharacterAddReqData,
   CharacterEditReqData,
   CharacterResData,
-  DeletedMessage,
   PaginatedApiRes,
   PaginatedReqParams,
 } from "./types";
@@ -12,12 +11,12 @@ const BASE_URL = "https://jsninjas-testtask-backend.onrender.com/api";
 
 const instance = axios.create({ baseURL: BASE_URL });
 
-export const getAllCharacters = (
-  params: PaginatedReqParams
+export const getAllCharacters = async (
+  params?: PaginatedReqParams
 ): Promise<AxiosResponse<PaginatedApiRes<CharacterResData>>> =>
-  instance.get("/characters", {
-    params: { ...params },
-  });
+  await instance.get(
+    `/characters/?page=${params?.page || 1}&perPage=${params?.perPage || 5}`
+  );
 
 export const getCharacterById = (
   id: string

@@ -33,6 +33,7 @@ const charactersSlice = createSlice({
         (state, action: PayloadAction<PaginatedApiRes<CharacterResData>>) => {
           state.loading = false;
           state.characters = action.payload.results;
+          console.log(action.payload.results);
         }
       )
       .addCase(
