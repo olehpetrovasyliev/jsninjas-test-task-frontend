@@ -21,7 +21,6 @@ export interface CharacterResData {
 }
 
 export interface CharacterAddReqData {
-  _id: string;
   nickname: string;
   real_name: string;
   origin_description: string;
@@ -31,7 +30,6 @@ export interface CharacterAddReqData {
 }
 
 export interface CharacterEditReqData {
-  _id?: string;
   nickname?: string;
   real_name?: string;
   origin_description?: string;

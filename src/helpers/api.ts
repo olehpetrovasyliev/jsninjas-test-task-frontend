@@ -34,10 +34,10 @@ export const addCharacter = (
   formData.append("catch_phrase", newCharacter.catch_phrase);
 
   newCharacter.superpowers.forEach((superpower: string) =>
-    formData.append("superpowers", superpower)
+    formData.append("superpowers[]", superpower)
   );
 
-  newCharacter.images.forEach((image: File) =>
+  Array.from(newCharacter.images).forEach((image: File) =>
     formData.append("images", image)
   );
 

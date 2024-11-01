@@ -52,6 +52,8 @@ export const addCharacterThunk = createAsyncThunk<
     const res: AxiosResponse<CharacterResData> = await addCharacter(
       newCharacter
     );
+    console.log(newCharacter);
+
     return res.data;
   } catch (error: any) {
     return rejectWithValue(error.message);
@@ -66,6 +68,8 @@ export const updateCharacterThunk = createAsyncThunk<
     const response: AxiosResponse<CharacterResData> = await updateCharacter(
       newCharacter
     );
+    console.log(newCharacter);
+
     return response.data;
   } catch (error: any) {
     return rejectWithValue(error.message);
