@@ -1,7 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { getCharacterByIdThunk } from "../helpers/redux/characters/charactersOperations";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  deleteCharacterThunk,
+  getCharacterByIdThunk,
+} from "../helpers/redux/characters/charactersOperations";
 import { AppDispatch } from "../helpers/redux/store";
 import {
   selectCurrentCharacter,
@@ -14,12 +17,20 @@ const CharacterPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const character = useSelector(selectCurrentCharacter);
   const isLoading = useSelector(selectLoading);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (id) {
       dispatch(getCharacterByIdThunk(id));
     }
   }, [dispatch, id]);
+
+  const handleDelete = () => {
+    if (id) {
+      dispatch(deleteCharacterThunk(id));
+    }
+    navigate("/characters");
+  };
 
   return (
     <section>
@@ -50,6 +61,7 @@ const CharacterPage = () => {
               </SwiperSlide>
             ))}
           </Swiper>
+          <button onClick={handleDelete}>Delete character</button>
         </>
       ) : (
         <h1>Character with id {id} not exists</h1>
