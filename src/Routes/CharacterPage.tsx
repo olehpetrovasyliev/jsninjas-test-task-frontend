@@ -36,35 +36,33 @@ const CharacterPage = () => {
     <section>
       {isLoading ? (
         <h1>loading</h1>
-      ) : character ? (
+      ) : (
         <>
           {" "}
-          <h1>{character.nickname}</h1>
-          <h2>Real Name: {character.real_name}</h2>
+          <h1>{character?.nickname}</h1>
+          <h2>Real Name: {character?.real_name}</h2>
           <p>
-            <strong>Origin:</strong> {character.origin_description}
+            <strong>Origin:</strong> {character?.origin_description}
           </p>
           <h3>Superpowers:</h3>
           <ul>
-            {character.superpowers.map((power, index) => (
+            {character?.superpowers.map((power, index) => (
               <li key={index}>{power}</li>
             ))}
           </ul>
           <p>
-            <strong>Catchphrase:</strong> "{character.catch_phrase}"
+            <strong>Catchphrase:</strong> "{character?.catch_phrase}"
           </p>
           <h3>Images:</h3>
           <Swiper>
-            {character.images.map((image, index) => (
+            {character?.images.map((image, index) => (
               <SwiperSlide>
-                <img key={index} src={image} alt={`${character.nickname}`} />
+                <img key={index} src={image} alt={`${character?.nickname}`} />
               </SwiperSlide>
             ))}
           </Swiper>
           <button onClick={handleDelete}>Delete character</button>
         </>
-      ) : (
-        <h1>Character with id {id} not exists</h1>
       )}
     </section>
   );

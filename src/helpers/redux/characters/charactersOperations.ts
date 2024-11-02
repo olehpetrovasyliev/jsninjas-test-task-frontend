@@ -61,10 +61,11 @@ export const addCharacterThunk = createAsyncThunk<
 
 export const updateCharacterThunk = createAsyncThunk<
   CharacterResData,
-  CharacterEditReqData
->("characters/update", async (newCharacter, { rejectWithValue }) => {
+  { id: string; newCharacter: CharacterEditReqData }
+>("characters/update", async ({ id, newCharacter }, { rejectWithValue }) => {
   try {
     const response: AxiosResponse<CharacterResData> = await updateCharacter(
+      id,
       newCharacter
     );
     console.log(newCharacter);

@@ -49,6 +49,7 @@ export const addCharacter = (
 };
 
 export const updateCharacter = (
+  id: string,
   newCharacter: CharacterEditReqData
 ): Promise<AxiosResponse<CharacterResData>> => {
   const formData = new FormData();
@@ -73,7 +74,7 @@ export const updateCharacter = (
     );
   }
 
-  return instance.post("/characters", formData, {
+  return instance.put(`/characters/${id}`, formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },

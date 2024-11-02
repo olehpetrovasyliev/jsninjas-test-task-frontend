@@ -1,10 +1,9 @@
-import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Test from "./components/Test";
-import HomePage from "./Routes/HomePage";
+import HomePage from "./Routes/HomePage/HomePage";
 import AllCharactersPage from "./Routes/AllCharactersPage";
 import AddCharacterPage from "./Routes/AddCharacterPage";
 import CharacterPage from "./Routes/CharacterPage";
+import "./index.scss";
 
 function App() {
   return (

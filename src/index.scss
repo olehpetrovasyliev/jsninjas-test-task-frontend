@@ -1,0 +1,42 @@
+@import "./variables";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Arial", sans-serif;
+  font-size: $font-size-base;
+  background-color: $color-background;
+  color: $color-text;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $color-text;
+  margin-bottom: 16px;
+}
+
+button {
+  font-family: "Arial", sans-serif;
+  font-size: $font-size-base;
+  background: $color-primary;
+  padding: $padding-base;
+  cursor: pointer;
+  border: none;
+  border-radius: $border-radius;
+  transition: all 300ms ease;
+
+  &:hover {
+    background-color: $color-primary-hover;
+  }
+}

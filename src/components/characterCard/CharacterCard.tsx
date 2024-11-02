@@ -1,6 +1,7 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { CharacterResData } from "../../helpers/types";
 import { Link } from "react-router-dom";
+import styles from "./characterCard.module.scss";
 
 const CharacterCard: FC<CharacterResData> = ({
   _id,
@@ -9,11 +10,22 @@ const CharacterCard: FC<CharacterResData> = ({
   images,
 }) => {
   return (
-    <li>
-      <img src={images[0]} alt={`${nickname}'s photo`} />
-      <h3>{nickname}</h3>
-      <p>{catch_phrase}</p>
-      <Link to={`/characters/${_id}`}>Viev info</Link>
+    <li className={styles.characterCard}>
+      <img
+        src={images[0]}
+        alt={`${nickname}'s photo`}
+        className={styles.characterCard__image}
+        width={300}
+        height={300}
+      />
+      <h3 className={styles.characterCard__nickname}>{nickname}</h3>
+      <p className={styles.characterCard__catchPhrase}>{catch_phrase}</p>
+      <Link
+        to={`/characters/${_id}`}
+        className={styles.characterCard__viewInfo}
+      >
+        Viev info
+      </Link>
     </li>
   );
 };
