@@ -1,41 +1,45 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCharactersThunk } from "../helpers/redux/characters/charactersOperations";
-import { PaginatedReqParams } from "../helpers/types";
 import { AppDispatch } from "../helpers/redux/store";
-import { selectAllCharacters } from "../helpers/redux/characters/charactersSelectors";
+import {
+  selectAllCharacters,
+  selectCharactersPage,
+  selectCharactersPerPage,
+  selectCharactersTotalPages,
+} from "../helpers/redux/characters/charactersSelectors";
 import CharactersList from "../components/CharactersList/CharactersList";
 import AddCharacterLink from "../components/AddCharacterLink/AddCharacterLink";
-import { getAllCharacters } from "../helpers/api";
+import { setPage } from "../helpers/redux/characters/charactersSlice";
 
 const AllCharactersPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const charactersArr = useSelector(selectAllCharacters);
+  const page = useSelector(selectCharactersPage);
+  const perPage = useSelector(selectCharactersPerPage);
+  const totalPages = useSelector(selectCharactersTotalPages);
 
   useEffect(() => {
-    const params: PaginatedReqParams = {
-      page: 1,
-      perPage: 10,
-    };
+    dispatch(getAllCharactersThunk({ page, perPage }));
+    console.log({ charactersArr, page, perPage });
+  }, [dispatch, page, perPage]);
 
-    dispatch(getAllCharactersThunk(params));
-    console.log(charactersArr);
-  }, [dispatch]);
-
-  // const [charactersArr, setCharactersArr] = useState<any>([]);
-
-  // useEffect(() => {
-  //   const fetchData = async (params?: PaginatedReqParams) => {
-  //     const res = await getAllCharacters(params);
-  //     setCharactersArr(res.data);
-  //   };
-  //   fetchData({ page: 1, perPage: 5 });
-  //   console.log(charactersArr);
-  // }, []);
-
+  const handleNextPage = () => {
+    dispatch(setPage(page + 1));
+  };
+  const handlePrevPage = () => {
+    dispatch(setPage(page - 1));
+  };
   return (
     <section>
       <CharactersList charactersArray={charactersArr} />
+      <button onClick={handlePrevPage} disabled={page === 1}>
+        Prev Page
+      </button>
+
+      <button onClick={handleNextPage} disabled={page === totalPages}>
+        Next Page
+      </button>
       <AddCharacterLink />
     </section>
   );

@@ -52,7 +52,6 @@ export const addCharacterThunk = createAsyncThunk<
     const res: AxiosResponse<CharacterResData> = await addCharacter(
       newCharacter
     );
-    console.log(newCharacter);
 
     return res.data;
   } catch (error: any) {

@@ -13,7 +13,7 @@ const CharacterCard: FC<CharacterResData> = ({
       <img src={images[0]} alt={`${nickname}'s photo`} />
       <h3>{nickname}</h3>
       <p>{catch_phrase}</p>
-      <Link to={`characters/${_id}`}>Viev info</Link>
+      <Link to={`/characters/${_id}`}>Viev info</Link>
     </li>
   );
 };

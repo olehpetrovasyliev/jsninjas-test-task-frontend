@@ -4,13 +4,14 @@ import Test from "./components/Test";
 import HomePage from "./Routes/HomePage";
 import AllCharactersPage from "./Routes/AllCharactersPage";
 import AddCharacterPage from "./Routes/AddCharacterPage";
+import CharacterPage from "./Routes/CharacterPage";
 
 function App() {
   return (
     <Routes>
       <Route index element={<HomePage />} />
       <Route path="/characters" element={<AllCharactersPage />} />
-      <Route path="/characters/:id" element={<Test />} />
+      <Route path="/characters/:id" element={<CharacterPage />} />
       <Route path="/addCharacter" element={<AddCharacterPage />} />
     </Routes>
   );

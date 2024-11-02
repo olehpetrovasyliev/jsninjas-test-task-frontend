@@ -9,6 +9,9 @@ import {
 import { CharacterResData, PaginatedApiRes } from "../../types";
 
 interface CharactersState {
+  page: number;
+  perPage: number;
+  totalPages: number;
   characters: CharacterResData[];
   currentCharacter: CharacterResData | null;
   loading: boolean;
@@ -16,6 +19,9 @@ interface CharactersState {
 }
 
 const initialState: CharactersState = {
+  page: 1,
+  perPage: 5,
+  totalPages: 3,
   characters: [],
   currentCharacter: null,
   loading: false,
@@ -25,7 +31,22 @@ const initialState: CharactersState = {
 const charactersSlice = createSlice({
   name: "characters",
   initialState,
-  reducers: {},
+  reducers: {
+    setPage(state, action: PayloadAction<number>) {
+      state.page = action.payload;
+    },
+    setPerPage(state, action: PayloadAction<number>) {
+      state.perPage = action.payload;
+    },
+    loadMore(state, action: PayloadAction<number>) {
+      state.perPage += action.payload;
+      console.log("Updated perPage in reducer:", state.perPage);
+    },
+    resetPagination(state) {
+      state.page = 1;
+      state.perPage = 5;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(
@@ -33,7 +54,9 @@ const charactersSlice = createSlice({
         (state, action: PayloadAction<PaginatedApiRes<CharacterResData>>) => {
           state.loading = false;
           state.characters = action.payload.results;
-          console.log(action.payload.results);
+          state.perPage = action.payload.perPage;
+          state.page = action.payload.page;
+          state.totalPages = action.payload.totalPages;
         }
       )
       .addCase(
@@ -96,5 +119,7 @@ const charactersSlice = createSlice({
       );
   },
 });
+export const { setPage, setPerPage, loadMore, resetPagination } =
+  charactersSlice.actions;
 
 export default charactersSlice.reducer;

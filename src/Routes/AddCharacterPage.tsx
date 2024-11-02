@@ -3,9 +3,10 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { addCharacterThunk } from "../helpers/redux/characters/charactersOperations";
 import { CharacterAddReqData } from "../helpers/types";
 import { AppDispatch } from "../helpers/redux/store";
-import { addCharacter } from "../helpers/api";
+import { useNavigate } from "react-router-dom";
 const AddCharacterPage = () => {
   const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -19,8 +20,10 @@ const AddCharacterPage = () => {
     name: "superpowers",
   });
 
-  const onSubmit = (data: CharacterAddReqData) => addCharacter(data);
-  // console.log(data);
+  const onSubmit = (data: CharacterAddReqData) => {
+    dispatch(addCharacterThunk(data));
+    navigate("/characters");
+  };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div>
