@@ -3,7 +3,6 @@ import {
   CharacterAddReqData,
   CharacterEditReqData,
   CharacterResData,
-  DeletedMessage,
   PaginatedApiRes,
   PaginatedReqParams,
 } from "../../types";
