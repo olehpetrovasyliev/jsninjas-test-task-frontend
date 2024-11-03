@@ -79,6 +79,11 @@ const charactersSlice = createSlice({
             state.page === state.totalPages
           ) {
             state.characters.push(action.payload);
+          } else if (
+            state.characters.length === state.perPage &&
+            state.page === state.totalPages
+          ) {
+            state.totalPages += 1;
           }
         }
       )
