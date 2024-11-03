@@ -12,10 +12,9 @@ Welcome to the Superhero Character Manager frontend! This application allows use
 ## Technologies Used
 
 - **React**: A JavaScript library for building user interfaces.
-- **Redux**: For state management.
+- **Redux Toolkit**: For state management.
 - **React Hook Form**: To manage form state and validation.
 - **React Router**: For handling routing in the application.
-- **Swiper**: For creating a responsive image carousel.
 - **SCSS**: For styling components.
 
 ## Installation
