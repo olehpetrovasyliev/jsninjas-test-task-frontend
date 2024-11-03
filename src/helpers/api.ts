@@ -69,7 +69,7 @@ export const updateCharacter = (
   }
 
   if (newCharacter.images) {
-    newCharacter.images.forEach((image: File) =>
+    Array.from(newCharacter.images).forEach((image: File) =>
       formData.append("images", image)
     );
   }

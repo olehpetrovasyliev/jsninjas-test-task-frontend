@@ -4,6 +4,7 @@ import AllCharactersPage from "./Routes/AllCharactersPage/AllCharactersPage";
 import AddCharacterPage from "./Routes/AddCharacterPage/AddCharacterPage";
 import CharacterPage from "./Routes/CharacterPage/CharacterPage";
 import "./index.scss";
+import EditCharacterPage from "./Routes/EditCharacterPage/EditCharacterPage";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Route index element={<HomePage />} />
       <Route path="/characters" element={<AllCharactersPage />} />
       <Route path="/characters/:id" element={<CharacterPage />} />
-      <Route path="/characters/:id/edit" element={<CharacterPage />} />
+      <Route path="/characters/:id/edit" element={<EditCharacterPage />} />
 
       <Route path="/addCharacter" element={<AddCharacterPage />} />
     </Routes>
