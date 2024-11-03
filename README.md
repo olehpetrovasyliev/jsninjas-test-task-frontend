@@ -22,7 +22,7 @@ Welcome to the Superhero Character Manager frontend! This application allows use
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/superhero-character-manager-frontend.git
+   https://github.com/olehpetrovasyliev/jsninjas-testtask-frontend.git
    ```
 
 2. Install dependencies:
