@@ -1,0 +1,104 @@
+@import "../../variables.scss";
+
+.addCharacterForm {
+  display: flex;
+  flex-direction: column;
+  gap: $padding-base;
+  padding: 2 * $padding-base;
+  background-color: $color-background;
+  border-radius: $border-radius;
+  max-width: 500px;
+  margin: auto;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5 * $padding-base;
+  }
+
+  &__info {
+    font-size: $font-size-base;
+    color: $color-text;
+  }
+
+  &__input {
+    padding: $padding-base;
+    border: 1px solid darken($color-background-card, 10%);
+    border-radius: $border-radius;
+    font-size: $font-size-base;
+    color: $color-text;
+    background-color: #fff;
+    width: 100%;
+
+    &:focus {
+      outline: 1px solid $color-primary;
+    }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  &__superpowerFieldWrapper {
+    display: flex;
+    align-items: center;
+    gap: $padding-base;
+
+    &__removeSuperpowerBtn {
+      padding: $padding-base;
+      font-size: $font-size-base;
+      background-color: $color-primary;
+      color: #fff;
+      border: none;
+      border-radius: $border-radius;
+      cursor: pointer;
+      transition: background-color 300ms ease;
+
+      &:hover {
+        background-color: $color-primary-hover;
+      }
+    }
+  }
+
+  &__customFileInput {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid $color-primary;
+    color: $color-text;
+    text-align: center;
+    border-radius: $border-radius;
+    font-size: $font-size-base;
+    cursor: pointer;
+    transition: all 300ms ease;
+
+    &__info {
+      margin-right: $padding-base;
+      font-weight: bold;
+      color: $color-background;
+      background: $color-primary;
+      font-size: $font-size-base;
+      padding: $padding-base 2 * $padding-base;
+    }
+  }
+
+  &__fileInput {
+    visibility: hidden;
+  }
+
+  &__submitBtn {
+    padding: $padding-base 2 * $padding-base;
+    background-color: $color-primary;
+    color: #fff;
+    border: none;
+    border-radius: $border-radius;
+    font-size: $font-size-large;
+    cursor: pointer;
+    transition: all 300ms ease;
+
+    &:hover {
+      background-color: $color-primary-hover;
+    }
+  }
+}

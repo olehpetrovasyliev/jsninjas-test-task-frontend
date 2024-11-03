@@ -1,0 +1,81 @@
+@import "../../variables.scss";
+
+.characterPage {
+  padding: 2 * $padding-base;
+  background-color: $color-background;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+
+  &__title {
+    font-size: $font-size-large;
+    color: $color-text;
+    margin-bottom: $padding-base;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  &__subtitle {
+    font-size: $font-size-base;
+    color: $color-primary;
+    margin-bottom: $padding-base;
+    text-align: center;
+  }
+
+  &__origin,
+  &__catchPhrase {
+    font-size: $font-size-base;
+    margin: $padding-base 0;
+
+    strong {
+      font-weight: 700;
+    }
+  }
+
+  &__superpowersList {
+    display: flex;
+    gap: $padding-base;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: $padding-base;
+  }
+
+  &__superpower {
+    border: 1px solid $color-primary;
+    color: $color-primary;
+    font-weight: 700;
+    padding: $padding-base / 2 $padding-base;
+    border-radius: $border-radius;
+    text-transform: uppercase;
+  }
+
+  &__imagesWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $padding-base;
+    margin-bottom: 2 * $padding-base;
+  }
+
+  &__img {
+    display: block;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  &__deleteBtn {
+    padding: $padding-base;
+    background-color: tomato;
+    color: $color-background;
+    border: none;
+    border-radius: $border-radius;
+    font-size: $font-size-base;
+    cursor: pointer;
+    transition: all 300ms ease;
+
+    &:hover {
+      background-color: rgb(184, 57, 35);
+    }
+  }
+}

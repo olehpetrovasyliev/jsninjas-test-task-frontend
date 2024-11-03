@@ -1,0 +1,33 @@
+@import "../../variables.scss";
+
+.charactersSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  &__pagination {
+    display: flex;
+    gap: $padding-base;
+    padding: $padding-base;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__addCharacter {
+    display: block;
+    padding: $padding-base 2 * $padding-base;
+    background-color: $color-secondary;
+    text-decoration: none;
+    border-radius: $border-radius;
+    font-size: $font-size-base;
+    transition: all 300ms ease;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $color-text;
+
+    &:hover {
+      background-color: $color-secondary-hover;
+    }
+  }
+}

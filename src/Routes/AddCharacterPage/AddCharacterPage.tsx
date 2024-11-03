@@ -1,0 +1,119 @@
+import { useDispatch } from "react-redux";
+import { useFieldArray, useForm } from "react-hook-form";
+import { addCharacterThunk } from "../../helpers/redux/characters/charactersOperations";
+import { CharacterAddReqData } from "../../helpers/types";
+import { AppDispatch } from "../../helpers/redux/store";
+import { useNavigate } from "react-router-dom";
+import styles from "./AddCharacter.module.scss";
+import { useState } from "react";
+
+const AddCharacterPage = () => {
+  const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { register, handleSubmit, control } = useForm<CharacterAddReqData>();
+
+  const { fields, append, remove } = useFieldArray<any>({
+    control,
+    name: "superpowers",
+  });
+
+  const onSubmit = (data: CharacterAddReqData) => {
+    dispatch(addCharacterThunk(data));
+    console.log(data);
+
+    // navigate("/characters");
+  };
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className={styles.addCharacterForm}>
+      <div className={styles.addCharacterForm__field}>
+        <label htmlFor="nickname" className={styles.addCharacterForm__info}>
+          Nickname
+        </label>
+        <input
+          {...register("nickname", { required: true })}
+          id="nickname"
+          className={styles.addCharacterForm__input}
+        />
+      </div>
+
+      <div className={styles.addCharacterForm__field}>
+        <label className={styles.addCharacterForm__info} htmlFor="real_name">
+          Real Name
+        </label>
+        <input
+          {...register("real_name", { required: true })}
+          id="real_name"
+          className={styles.addCharacterForm__input}
+        />
+      </div>
+
+      <label className={styles.addCharacterForm__field}>
+        <label
+          className={styles.addCharacterForm__info}
+          htmlFor="origin_description"
+        >
+          Origin Description
+        </label>
+        <textarea
+          {...register("origin_description", { required: true })}
+          id="origin_description"
+          className={`${styles.addCharacterForm__input} ${styles.addCharacterForm__textarea}`}
+        />
+      </label>
+
+      <div className={styles.addCharacterForm__field}>
+        <label className={styles.addCharacterForm__info}>Superpowers</label>
+        {fields.map((field, index) => (
+          <div
+            key={field.id}
+            className={styles.addCharacterForm__superpowerFieldWrapper}
+          >
+            <input
+              {...register(`superpowers.${index}`)}
+              placeholder={`Superpower #${index + 1}`}
+              className={styles.addCharacterForm__input}
+            />
+            <button type="button" onClick={() => remove(index)}>
+              Remove
+            </button>
+          </div>
+        ))}
+        <button type="button" onClick={() => append("")}>
+          Add Superpower
+        </button>
+      </div>
+
+      <label className={styles.addCharacterForm__field}>
+        <label className={styles.addCharacterForm__info}>Catchphrase</label>
+        <input
+          {...register("catch_phrase", { required: true })}
+          className={styles.addCharacterForm__input}
+        />
+      </label>
+
+      <div className={styles.addCharacterForm__field}>
+        <label
+          htmlFor="images"
+          className={styles.addCharacterForm__customFileInput}
+        >
+          <span className={styles.addCharacterForm__customFileInput__info}>
+            Images
+          </span>
+          Choose Files
+        </label>
+        <input
+          id="images"
+          type="file"
+          multiple
+          {...register("images", { required: true })}
+          className={styles.addCharacterForm__fileInput}
+        />
+      </div>
+
+      <button type="submit">Add Character</button>
+    </form>
+  );
+};
+
+export default AddCharacterPage;

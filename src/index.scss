@@ -35,8 +35,18 @@ button {
   border: none;
   border-radius: $border-radius;
   transition: all 300ms ease;
+  color: $color-background;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: $color-primary-hover;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background: rgb(172, 171, 171);
+  }
+}
+
+a {
+  color: $color-text;
 }
