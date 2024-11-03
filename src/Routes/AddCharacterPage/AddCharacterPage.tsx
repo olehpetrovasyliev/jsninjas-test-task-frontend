@@ -23,12 +23,15 @@ const AddCharacterPage = () => {
     name: "superpowers",
   });
 
+  const [fileCount, setFileCount] = useState<number>(0);
+
   const onSubmit = (data: CharacterAddReqData) => {
     dispatch(addCharacterThunk(data));
     console.log(data);
 
     navigate("/characters");
   };
+
   return (
     <section className={styles.addCharacterPage}>
       <h1 className={styles.addCharacterPage__title}>Add new character</h1>
@@ -135,13 +138,19 @@ const AddCharacterPage = () => {
             <span className={styles.addCharacterForm__customFileInput__info}>
               Images
             </span>
-            Choose Files
+            {fileCount > 0 ? `${fileCount} File(s) Selected` : "Choose Files"}{" "}
           </label>
           <input
             id="images"
             type="file"
             multiple
-            {...register("images", { required: "Images are required" })}
+            {...register("images", {
+              required: "Images are required",
+              onChange: (e) => {
+                const selectedFiles = e.target.files;
+                setFileCount(selectedFiles ? selectedFiles.length : 0);
+              },
+            })}
             className={styles.addCharacterForm__fileInput}
           />
           {errors.images && (
