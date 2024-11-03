@@ -1,50 +1,53 @@
-# React + TypeScript + Vite
+# Superhero Character Manager - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to the Superhero Character Manager frontend! This application allows users to manage a collection of superhero characters, including adding, editing, and viewing details about each character.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add new superhero characters with details like nickname, real name, origin description, superpowers, catchphrase, and images.
+- Edit existing characters.
+- View character details in a dedicated page.
+- Responsive design for a smooth user experience.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **React**: A JavaScript library for building user interfaces.
+- **Redux**: For state management.
+- **React Hook Form**: To manage form state and validation.
+- **React Router**: For handling routing in the application.
+- **Swiper**: For creating a responsive image carousel.
+- **SCSS**: For styling components.
 
-- Configure the top-level `parserOptions` property like this:
+## Installation
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Clone the repository:
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+   ```bash
+   git clone https://github.com/yourusername/superhero-character-manager-frontend.git
+   ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+2. Install dependencies:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```bash
+     npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+     npm run dev
+   ```
+
+## Usage
+
+- Add Character: Click on the "Add Character" button to create a new superhero character. Fill out the form and submit to save.
+
+- Edit Character: Click on an existing character to view details. Use the "Edit" button to modify the character's information.
+
+- View Characters: Browse through the list of characters and click to see more details, including images and superpowers.
+
+- Delete character: Click on an existing character to view details. Use the "Delete" button to delete character from database.
+
+## License
+
+Feel free to modify any part of these READMEs to better fit your project’s specifics!
