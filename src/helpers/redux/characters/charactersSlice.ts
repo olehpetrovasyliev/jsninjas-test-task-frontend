@@ -40,7 +40,6 @@ const charactersSlice = createSlice({
     },
     loadMore(state, action: PayloadAction<number>) {
       state.perPage += action.payload;
-      console.log("Updated perPage in reducer:", state.perPage);
     },
     resetPagination(state) {
       state.page = 1;

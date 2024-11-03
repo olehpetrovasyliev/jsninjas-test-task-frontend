@@ -27,7 +27,6 @@ const AddCharacterPage = () => {
 
   const onSubmit = (data: CharacterAddReqData) => {
     dispatch(addCharacterThunk(data));
-    console.log(data);
 
     navigate("/characters");
   };

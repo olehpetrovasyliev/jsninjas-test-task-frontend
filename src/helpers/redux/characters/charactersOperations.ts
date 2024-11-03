@@ -68,7 +68,6 @@ export const updateCharacterThunk = createAsyncThunk<
       id,
       newCharacter
     );
-    console.log(newCharacter);
 
     return response.data;
   } catch (error: any) {

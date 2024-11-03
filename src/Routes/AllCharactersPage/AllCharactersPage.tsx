@@ -24,7 +24,6 @@ const AllCharactersPage = () => {
 
   useEffect(() => {
     dispatch(getAllCharactersThunk({ page, perPage }));
-    console.log({ charactersArr, page, perPage });
   }, [dispatch, page, perPage]);
 
   const handleNextPage = () => {
@@ -43,11 +42,11 @@ const AllCharactersPage = () => {
 
       <AddCharacterLink className={styles.charactersSection__addCharacter} />
       <div className={styles.charactersSection__pagination}>
-        <button onClick={handlePrevPage} disabled={page === 1}>
+        <button onClick={handlePrevPage} disabled={page <= 1}>
           Prev Page
         </button>
 
-        <button onClick={handleNextPage} disabled={page === totalPages}>
+        <button onClick={handleNextPage} disabled={page >= totalPages}>
           Next Page
         </button>
       </div>
