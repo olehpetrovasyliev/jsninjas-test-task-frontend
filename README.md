@@ -37,6 +37,8 @@ Welcome to the Superhero Character Manager frontend! This application allows use
      npm run dev
    ```
 
+Also, you can visit live page here -[ https://jsninjas-test-task-frontend-vrd6.vercel.app/](https://jsninjas-test-task-frontend-vrd6.vercel.app/)
+
 ## Usage
 
 - Add Character: Click on the "Add Character" button to create a new superhero character. Fill out the form and submit to save.
