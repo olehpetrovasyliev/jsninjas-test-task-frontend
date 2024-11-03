@@ -51,3 +51,5 @@ Welcome to the Superhero Character Manager frontend! This application allows use
 ## License
 
 Feel free to modify any part of these READMEs to better fit your project’s specifics!
+
+#### P.S. Backend is deployed on render.com, so it can take a few minutes to first load project
