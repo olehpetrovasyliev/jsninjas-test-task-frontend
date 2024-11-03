@@ -45,7 +45,7 @@
     text-decoration: none;
     border-radius: $border-radius;
     font-size: $font-size-base;
-    transition: background-color $transition-duration;
+    transition: all 300ms ease;
 
     &:hover {
       background-color: $color-secondary-hover;

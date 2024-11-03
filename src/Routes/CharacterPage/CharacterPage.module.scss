@@ -66,16 +66,15 @@
 
   &__deleteBtn {
     padding: $padding-base;
-    background-color: tomato;
+    background-color: $color-delete;
     color: $color-background;
-    border: none;
     border-radius: $border-radius;
     font-size: $font-size-base;
     cursor: pointer;
     transition: all 300ms ease;
 
     &:hover {
-      background-color: rgb(184, 57, 35);
+      background-color: $color-delete-hover !important;
     }
   }
 }

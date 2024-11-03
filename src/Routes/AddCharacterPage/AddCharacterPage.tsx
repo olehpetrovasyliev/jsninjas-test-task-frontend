@@ -11,7 +11,12 @@ const AddCharacterPage = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { register, handleSubmit, control } = useForm<CharacterAddReqData>();
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<CharacterAddReqData>();
 
   const { fields, append, remove } = useFieldArray<any>({
     control,
@@ -22,7 +27,7 @@ const AddCharacterPage = () => {
     dispatch(addCharacterThunk(data));
     console.log(data);
 
-    // navigate("/characters");
+    navigate("/characters");
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.addCharacterForm}>
@@ -35,6 +40,11 @@ const AddCharacterPage = () => {
           id="nickname"
           className={styles.addCharacterForm__input}
         />
+        {errors.nickname && (
+          <span className={styles.addCharacterForm__error}>
+            {errors.nickname.message}
+          </span>
+        )}
       </div>
 
       <div className={styles.addCharacterForm__field}>
@@ -46,6 +56,11 @@ const AddCharacterPage = () => {
           id="real_name"
           className={styles.addCharacterForm__input}
         />
+        {errors.real_name && (
+          <span className={styles.addCharacterForm__error}>
+            {errors.real_name.message}
+          </span>
+        )}
       </div>
 
       <label className={styles.addCharacterForm__field}>
@@ -60,6 +75,11 @@ const AddCharacterPage = () => {
           id="origin_description"
           className={`${styles.addCharacterForm__input} ${styles.addCharacterForm__textarea}`}
         />
+        {errors.origin_description && (
+          <span className={styles.addCharacterForm__error}>
+            {errors.origin_description.message}
+          </span>
+        )}
       </label>
 
       <div className={styles.addCharacterForm__field}>
@@ -79,6 +99,7 @@ const AddCharacterPage = () => {
             </button>
           </div>
         ))}
+
         <button type="button" onClick={() => append("")}>
           Add Superpower
         </button>
@@ -90,6 +111,11 @@ const AddCharacterPage = () => {
           {...register("catch_phrase", { required: true })}
           className={styles.addCharacterForm__input}
         />
+        {errors.catch_phrase && (
+          <span className={styles.addCharacterForm__error}>
+            {errors.catch_phrase.message}
+          </span>
+        )}
       </label>
 
       <div className={styles.addCharacterForm__field}>
@@ -109,6 +135,11 @@ const AddCharacterPage = () => {
           {...register("images", { required: true })}
           className={styles.addCharacterForm__fileInput}
         />
+        {errors.images && (
+          <span className={styles.addCharacterForm__error}>
+            {errors.images.message}
+          </span>
+        )}
       </div>
 
       <button type="submit">Add Character</button>

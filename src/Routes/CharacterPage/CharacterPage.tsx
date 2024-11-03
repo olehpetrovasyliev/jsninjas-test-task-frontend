@@ -58,7 +58,6 @@ const CharacterPage = () => {
           <p className={styles.characterPage__catchPhrase}>
             <strong>Catch phrase:</strong> "{character?.catch_phrase}"
           </p>
-          <h3>Images:</h3>
           <div className={styles.characterPage__imagesWrapper}>
             {character?.images.map((image, index) => (
               <img

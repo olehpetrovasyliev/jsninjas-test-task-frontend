@@ -87,6 +87,14 @@
     visibility: hidden;
   }
 
+  &__error {
+    color: red;
+    font-size: 12px;
+    margin-top: 12px;
+    display: block;
+    position: static;
+  }
+
   &__submitBtn {
     padding: $padding-base 2 * $padding-base;
     background-color: $color-primary;

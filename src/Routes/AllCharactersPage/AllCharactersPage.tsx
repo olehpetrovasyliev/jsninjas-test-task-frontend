@@ -7,6 +7,7 @@ import {
   selectCharactersPage,
   selectCharactersPerPage,
   selectCharactersTotalPages,
+  selectLoading,
 } from "../../helpers/redux/characters/charactersSelectors";
 import CharactersList from "../../components/CharactersList/CharactersList";
 import AddCharacterLink from "../../components/AddCharacterLink/AddCharacterLink";
@@ -19,6 +20,7 @@ const AllCharactersPage = () => {
   const page = useSelector(selectCharactersPage);
   const perPage = useSelector(selectCharactersPerPage);
   const totalPages = useSelector(selectCharactersTotalPages);
+  const isLoading = useSelector(selectLoading);
 
   useEffect(() => {
     dispatch(getAllCharactersThunk({ page, perPage }));
@@ -33,7 +35,11 @@ const AllCharactersPage = () => {
   };
   return (
     <section className={styles.charactersSection}>
-      <CharactersList charactersArray={charactersArr} />
+      {isLoading ? (
+        <h2>loading</h2>
+      ) : (
+        <CharactersList charactersArray={charactersArr} />
+      )}
 
       <AddCharacterLink className={styles.charactersSection__addCharacter} />
       <div className={styles.charactersSection__pagination}>
