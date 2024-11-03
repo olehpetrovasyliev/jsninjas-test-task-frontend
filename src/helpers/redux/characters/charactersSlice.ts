@@ -21,7 +21,7 @@ interface CharactersState {
 const initialState: CharactersState = {
   page: 1,
   perPage: 5,
-  totalPages: 3,
+  totalPages: 2,
   characters: [],
   currentCharacter: null,
   loading: false,
@@ -52,6 +52,8 @@ const charactersSlice = createSlice({
         getAllCharactersThunk.fulfilled,
         (state, action: PayloadAction<PaginatedApiRes<CharacterResData>>) => {
           state.loading = false;
+          state.error = null;
+
           state.characters = action.payload.results;
           state.perPage = action.payload.perPage;
           state.page = action.payload.page;
@@ -62,6 +64,8 @@ const charactersSlice = createSlice({
         getCharacterByIdThunk.fulfilled,
         (state, action: PayloadAction<CharacterResData>) => {
           state.loading = false;
+          state.error = null;
+
           state.currentCharacter = action.payload;
         }
       )
@@ -69,13 +73,21 @@ const charactersSlice = createSlice({
         addCharacterThunk.fulfilled,
         (state, action: PayloadAction<CharacterResData>) => {
           state.loading = false;
-          state.characters.push(action.payload);
+          state.error = null;
+          if (
+            state.characters.length < state.perPage &&
+            state.page === state.totalPages
+          ) {
+            state.characters.push(action.payload);
+          }
         }
       )
       .addCase(
         updateCharacterThunk.fulfilled,
         (state, action: PayloadAction<CharacterResData>) => {
           state.loading = false;
+          state.error = null;
+
           const index = state.characters.findIndex(
             (character) => character._id === action.payload._id
           );
