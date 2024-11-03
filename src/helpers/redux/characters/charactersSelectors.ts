@@ -1,4 +1,3 @@
-import { CharacterResData } from "../../types";
 import { RootState } from "../store";
 
 export const selectAllCharacters = (state: RootState) =>
