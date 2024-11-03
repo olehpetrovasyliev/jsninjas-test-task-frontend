@@ -11,6 +11,8 @@ function App() {
       <Route index element={<HomePage />} />
       <Route path="/characters" element={<AllCharactersPage />} />
       <Route path="/characters/:id" element={<CharacterPage />} />
+      <Route path="/characters/:id/edit" element={<CharacterPage />} />
+
       <Route path="/addCharacter" element={<AddCharacterPage />} />
     </Routes>
   );

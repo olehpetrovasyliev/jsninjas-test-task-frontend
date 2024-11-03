@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import {
   deleteCharacterThunk,
   getCharacterByIdThunk,
@@ -10,7 +10,6 @@ import {
   selectCurrentCharacter,
   selectLoading,
 } from "../../helpers/redux/characters/charactersSelectors";
-import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./CharacterPage.module.scss";
 
 const CharacterPage = () => {
@@ -68,12 +67,20 @@ const CharacterPage = () => {
               />
             ))}
           </div>
-          <button
-            onClick={handleDelete}
-            className={styles.characterPage__deleteBtn}
-          >
-            Delete character
-          </button>
+          <div className={styles.characterPage__buttonsWrapper}>
+            <Link
+              to={`/characters/${id}/edit`}
+              className={styles.characterPage__editBtn}
+            >
+              Edit character
+            </Link>
+            <button
+              onClick={handleDelete}
+              className={styles.characterPage__deleteBtn}
+            >
+              Delete character
+            </button>
+          </div>
         </>
       )}
     </section>

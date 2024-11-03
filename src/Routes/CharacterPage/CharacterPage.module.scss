@@ -55,6 +55,7 @@
     align-items: center;
     gap: $padding-base;
     margin-bottom: 2 * $padding-base;
+    flex-wrap: wrap;
   }
 
   &__img {
@@ -63,15 +64,38 @@
     height: 300px;
     object-fit: cover;
   }
+  &__buttonsWrapper {
+    display: flex;
+    gap: 2 * $padding-base;
+    align-items: center;
+    justify-content: center;
 
+    @media only screen and (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+    }
+  }
+
+  &__editBtn,
   &__deleteBtn {
     padding: $padding-base;
-    background-color: $color-delete;
+    background-color: $color-primary;
     color: $color-background;
     border-radius: $border-radius;
     font-size: $font-size-base;
     cursor: pointer;
     transition: all 300ms ease;
+
+    @media only screen and (max-width: $breakpoint-mobile) {
+      width: 100%;
+    }
+
+    &:hover {
+      background-color: $color-primary-hover !important;
+    }
+  }
+
+  &__deleteBtn {
+    background-color: $color-delete;
 
     &:hover {
       background-color: $color-delete-hover !important;
